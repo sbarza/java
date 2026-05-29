@@ -78,7 +78,7 @@ Obs.:
 
   * **public <T> T\[] toArray(T\[] a):**
 
-    * Returns an array containing all of the elements in this list in proper sequence (from first to last element); the runtime type of the returned array is that of the specified array. If the list fits in the specified array, it is returned therein. Otherwise, a new array is allocated with the runtime type of the specified array and the size of this list. If the list fits in the specified array with room to spare (i.e., the array has more elements than the list), the element in the array immediately following the end of the collection is set to null. (This is useful in determining the length of the list only if the caller knows that the list does not contain any null elements.). Throws: ArrayStoreException – if the runtime type of the specified array is not a supertype of the runtime type of every element in this list NullPointerException – if the specified array is null
+    * This method takes one argument which should be an instance of a typed array. This method return an array of the same type. If the length of the array we pass has more elements than the list, extra elements will be filled with the default values for the type. If the length of the array we pass has less elements than the list, the method will still return an array, with the same number of elements in it, as the list
 
 
 
