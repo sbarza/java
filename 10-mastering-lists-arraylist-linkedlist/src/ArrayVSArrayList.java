@@ -54,10 +54,10 @@ public class ArrayVSArrayList {
         // List.toArray() method
         // This method takes one argument which should be an instance of a typed array.
         // This method return an array of the same type.
-         If the length of the array we pass has more elements than the list,
-         extra elements will be filled with the default values for the type.
-         If the length of the array we pass has less elements than the list,
-         the method will still return an array, with the same number of elements in it, as the list.
+        // If the length of the array we pass has more elements than the list,
+        // extra elements will be filled with the default values for the type.
+        // If the length of the array we pass has less elements than the list,
+        // the method will still return an array, with the same number of elements in it, as the list.
         ArrayList<String> stringList = new ArrayList<>(List.of("Jan", "Feb", "Mar"));
         var stringArray = stringList.toArray(new String[0]);
         System.out.println(Arrays.toString(stringArray));
