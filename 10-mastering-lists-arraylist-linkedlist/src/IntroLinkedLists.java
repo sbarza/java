@@ -1,6 +1,4 @@
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class IntroLinkedLists {
 
@@ -18,7 +16,21 @@ public class IntroLinkedLists {
 //        System.out.println(places);
 
         gettingElements(places);
+        System.out.println();
 
+        printItinerary(places);
+
+    }
+
+    private static void printItinerary(LinkedList<String> list) {
+        ListIterator<String> iterator = list.listIterator(1);
+        String previousTown = list.peek();
+
+        while (iterator.hasNext()) {
+            var town = iterator.next();
+            System.out.println("--> From: " + previousTown + " to " + town);
+            previousTown = town;
+        }
     }
 
     private static void removeElements(LinkedList<String> list) {
