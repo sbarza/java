@@ -16,23 +16,24 @@ public class Main {
         SportsTeam astros2 = new SportsTeam("Huston Astros");
         scoreResult(phillies2, 3, astros2, 5);
 
-        Team phillies = new Team("Philadelphia Phillies");
-        Team astros = new Team("Huston Astros");
+        Team<BaseballPlayer> phillies = new Team<>("Philadelphia Phillies");
+        Team<BaseballPlayer> astros = new Team<>("Huston Astros");
         scoreResult(phillies, 3, astros, 5);
 
         var harper = new BaseballPlayer("B Harper", "Right Fielder");
         var marsh = new BaseballPlayer("B Marsh", "Right Fielder");
         phillies.addTeamMember(harper);
         phillies.addTeamMember(marsh);
+        var guthrie = new BaseballPlayer("D Guthrie", "Center Fielder");
+        phillies.addTeamMember(guthrie);
         phillies.listTeamMembers();
 
-        SportsTeam afc = new SportsTeam("Adelaide Crows");
+        SportsTeam afc1 = new SportsTeam("Adelaide Crows");
+        Team<FootballPlayer> afc = new Team<>("Adelaide Crows");
         var tex = new FootballPlayer("Tex Walker", "Centre half forward");
         afc.addTeamMember(tex);
-        afc.listTeamMembers();
-
-        var guthrie = new BaseballPlayer("D Guthrie", "Center Fielder");
-        afc.addTeamMember(guthrie);
+        var rory = new FootballPlayer("Rory Laird", "Midfield");
+        afc.addTeamMember(rory);
         afc.listTeamMembers();
 
     }
