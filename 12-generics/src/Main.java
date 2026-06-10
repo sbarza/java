@@ -36,6 +36,16 @@ public class Main {
         afc.addTeamMember(rory);
         afc.listTeamMembers();
 
+        Team<String> adelaide = new Team<>("Adelaide Storm");
+        adelaide.addTeamMember("N Roberts");
+        adelaide.listTeamMembers();
+
+        var canberra = new Team<>("Canberra Heat");
+        canberra.addTeamMember("B Black");
+        canberra.listTeamMembers();
+        scoreResult(canberra, 0, adelaide, 1);
+
+        Team<Integer> melbourneVB = new Team<>("Melbourne Vipers");
     }
 
     public static void scoreResult(BaseballTeam team1, int t1_score,
