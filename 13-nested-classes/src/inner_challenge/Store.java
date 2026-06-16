@@ -1,5 +1,11 @@
 package inner_challenge;
 
+import domain.Employee;
+import domain.StoreEmployee;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Store {
 
     public static void main(String[] args) {
