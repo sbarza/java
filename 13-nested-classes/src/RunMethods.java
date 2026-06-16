@@ -54,7 +54,6 @@ public class RunMethods {
             }
         });
         sortIt(storeEmployees, (o1, o2) -> o1.getName().compareTo(o2.getName()));
-
     }
 
     public static <T> void sortIt(List<T> list,
