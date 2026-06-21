@@ -1,6 +1,8 @@
 package functional_interfaces.consumer_and_predicate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.BiConsumer;
 
 public class Main {
@@ -25,6 +27,21 @@ public class Main {
         coords.forEach(s -> processPoint(s[0], s[1],
                 (lat, lng) ->
                         System.out.printf("[lat:%.3f lon:%.3f]%n", lat, lng)));
+
+        List<String> list = new ArrayList<>(List.of(
+                "alpha", "bravo", "charlie", "delta"));
+
+        list.removeIf(s -> s.equalsIgnoreCase("bravo"));
+        list.forEach(s -> System.out.println(s));
+
+        list.addAll(List.of("echo", "easy", "earnest"));
+        list.forEach(s -> System.out.println(s));
+
+        System.out.println("-".repeat(20));
+        list.removeIf(s -> s.startsWith("ea"));
+        list.forEach(s -> System.out.println(s));
+
+
     }
 
     public static <T> void processPoint(T t1, T t2, BiConsumer<T, T> consumer) {
