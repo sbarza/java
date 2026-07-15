@@ -1,4 +1,4 @@
-package sets.challenge;
+package sets.hashset.challenge;
 
 import java.util.Objects;
 
