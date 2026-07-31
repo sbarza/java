@@ -49,6 +49,57 @@ public class TreeSetMain {
         copiedSet.forEach(System.out::println);
         System.out.println("---------------------------");
 
+        System.out.println("Full List:");
+        fullSet.forEach(System.out::println);
+        System.out.println("---------------------------");
+
+        // It is a contact in the set
+        Contact daffy = new Contact("Daffy Duck");
+
+        // A contact who isn't in the set
+        Contact daisy = new Contact("Daisy Duck");
+
+        // Snoopy is not in the set, but it would be the last, if inserted in the TreeSet
+        Contact snoopy = new Contact("Snoopy");
+
+        // Archie is not in the set, but it would be the first, if inserted in the TreeSet
+        Contact archie = new Contact("Archie");
+
+        for (Contact c : List.of(daffy, daisy, last, snoopy)) {
+            System.out.printf("ceiling(%s)=%s%n", c.getName(), fullSet.ceiling(c));
+            System.out.printf("higher(%s)=%s%n", c.getName(), fullSet.higher(c));
+        }
+
+        for (Contact c : List.of(daffy, daisy, first, archie)) {
+            System.out.printf("floor(%s)=%s%n", c.getName(), fullSet.floor(c));
+            System.out.printf("lower(%s)=%s%n", c.getName(), fullSet.lower(c));
+        }
+        System.out.println("--------------------------");
+
+        NavigableSet<Contact> descendingSet = fullSet.descendingSet();
+        descendingSet.forEach(System.out::println);
+        System.out.println("--------------------------");
+
+        Contact lastContact = descendingSet.pollLast();
+        System.out.println("Removed " + lastContact);
+        descendingSet.forEach(System.out::println);
+        System.out.println("--------------------------");
+        fullSet.forEach(System.out::println);
+        System.out.println("--------------------------");
+
+        Contact marion = new Contact("Maid Marion");
+        var headSet = fullSet.headSet(marion, true);
+        headSet.forEach(System.out::println);
+        System.out.println("--------------------------");
+
+        var tailSet = fullSet.tailSet(marion, false);
+        tailSet.forEach(System.out::println);
+        System.out.println("--------------------------");
+
+        Contact linus = new Contact("Linus Van Pelt");
+        var subSet = fullSet.subSet(linus, false, marion, true);
+        subSet.forEach(System.out::println);
+
     }
 
 }
