@@ -75,9 +75,14 @@ public class MainMap {
 
         System.out.println("----------------------------");
         contacts.clear();
-        Contact sergio = new Contact("Sérgio Barza");
+        Contact sergio = new Contact("Sérgio Barza", "sb@gmail.com");
+        Contact ana = new Contact("Ana Karla Barza", "akb@gmail.com");
 
-        Contact result = contacts.merge(defaultContact.getName(), defaultContact,
+        // No mapping in the map with key "Ana Karla Barza"
+        // The value returned is the value passed in the parameter (ana contact)
+        // The BiFunction is not computed
+        // The key is now associated with ana contact
+        Contact result = contacts.merge(ana.getName(), ana,
                 (c1, c2) -> {
                     System.out.println("Contact 1: " + c1);
                     System.out.println("Contact 2: " + c2);
@@ -90,9 +95,13 @@ public class MainMap {
 
         System.out.println("----------------------------");
         contacts.clear();
-        contacts.put(defaultContact.getName(), null);
+        contacts.put(ana.getName(), null);
 
-        Contact result2 = contacts.merge(defaultContact.getName(), defaultContact,
+        // There is a mapping with key "Ana Karla Barza" to value null
+        // The value returned is the value passed in the parameter (ana contact)
+        // The BiFunction is not computed
+        // The key is now associated with ana contact
+        Contact result2 = contacts.merge(ana.getName(), ana,
                 (c1, c2) -> {
                     System.out.println("Contact 1: " + c1);
                     System.out.println("Contact 2: " + c2);
@@ -107,7 +116,11 @@ public class MainMap {
         contacts.clear();
         contacts.put(sergio.getName(), sergio);
 
-        Contact result3 = contacts.merge(sergio.getName(), defaultContact,
+        // There is a mapping with key "Sérgio Barza" to value sergio contact
+        // The value returned is the value returned from the remappingFunction
+        // The BiFunction is computed
+        // The key is now associated with the value returned from the remappingFunction
+        Contact result3 = contacts.merge(sergio.getName(), ana,
                 (c1, c2) -> {
                     System.out.println("Contact 1: " + c1);
                     System.out.println("Contact 2: " + c2);
@@ -117,6 +130,27 @@ public class MainMap {
                 });
 
         System.out.println("Contact from merge result method: " + result3);
+
+        contacts.forEach((k, v) -> System.out.println("key=" + k + ", value= " + v));
+
+        System.out.println("----------------------------");
+        contacts.clear();
+        contacts.put(sergio.getName(), sergio);
+
+        // There is a mapping with key "Sérgio Barza" to value sergio contact
+        // The value returned is the value returned from the remappingFunction (in this case, null)
+        // The BiFunction is computed
+        // The entry for this specified key is removed, as the BiFunction returned null
+        Contact result4 = contacts.merge(sergio.getName(), ana,
+                (c1, c2) -> {
+                    System.out.println("Contact 1: " + c1);
+                    System.out.println("Contact 2: " + c2);
+                    Contact c = null;
+                    System.out.println("Result Contact: " + c);
+                    return c;
+                });
+
+        System.out.println("Contact from merge result method: " + result4);
 
         contacts.forEach((k, v) -> System.out.println("key=" + k + ", value= " + v));
 
